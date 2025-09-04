@@ -1,0 +1,8 @@
+<!doctype html><html><body>
+<h1>Delete "{{ object }}"?</h1>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Yes</button>
+</form>
+<a href="{% url 'contact_list' %}">Cancel</a>
+</body></html>

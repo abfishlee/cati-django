@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "core",
+    "contacts",
 ]
 
 MIDDLEWARE = [
@@ -107,6 +108,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "cati",
+        "USER": "catiuser",
+        "PASSWORD": "mint0087@@",
+        "HOST": "119.223.104.14",  # 예: '119.223.104.14'
+        "PORT": "3306",
+        "OPTIONS": {
+            "charset": "utf8mb4",
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
+        "CONN_MAX_AGE": 60,  # 커넥션 재사용(초)
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

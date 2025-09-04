@@ -1,0 +1,9 @@
+<!doctype html><html><body>
+<h1>{{ view.object|default:"New Contact" }}</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Save</button>
+</form>
+<a href="{% url 'contact_list' %}">Back</a>
+</body></html>

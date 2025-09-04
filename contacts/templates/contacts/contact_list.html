@@ -1,0 +1,15 @@
+<!doctype html><html><body>
+<h1>Contacts</h1>
+<a href="{% url 'contact_create' %}">+ New</a>
+<ul>
+  {% for c in object_list %}
+    <li>
+      {{ c.name }} ({{ c.email }}) - {{ c.phone }}
+      <a href="{% url 'contact_update' c.pk %}">Edit</a>
+      <a href="{% url 'contact_delete' c.pk %}">Delete</a>
+    </li>
+  {% empty %}
+    <li>No contacts yet.</li>
+  {% endfor %}
+</ul>
+</body></html>
