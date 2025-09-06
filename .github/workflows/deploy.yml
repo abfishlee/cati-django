@@ -16,6 +16,7 @@ jobs:
         host: ${{ secrets.SERVER_HOST }} # GitHub Secrets에 서버 IP 등록
         username: ${{ secrets.SERVER_USERNAME }} # GitHub Secrets에 사용자 이름 등록
         key: ${{ secrets.SERVER_SSH_KEY }} # GitHub Secrets에 SSH 비공개 키 등록
+        port: 2222
         script: |
           cd /srv/cati-django
           git pull origin main
