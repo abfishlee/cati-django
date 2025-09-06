@@ -1,0 +1,26 @@
+name: Deploy to Home Server
+
+on:
+  push:
+    branches:
+      - main # main 브랜치에 push될 때 실행
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Deploy to Server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SERVER_HOST }} # GitHub Secrets에 서버 IP 등록
+        username: ${{ secrets.SERVER_USERNAME }} # GitHub Secrets에 사용자 이름 등록
+        key: ${{ secrets.SERVER_SSH_KEY }} # GitHub Secrets에 SSH 비공개 키 등록
+        script: |
+          cd /srv/cati-django
+          git pull origin main
+          source venv/bin/activate
+          pip install -r requirements.txt
+          python manage.py migrate
+          python manage.py collectstatic --noinput
+          sudo systemctl restart gunicorn
