@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "core",
     "contacts",
+    "board",
 ]
 
 MIDDLEWARE = [
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#DATABASES = {
+# DATABASES = {
 #    "default": {
 #        "ENGINE": "django.db.backends.mysql",
 #        "NAME": "cati",
@@ -122,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 #        },
 #        "CONN_MAX_AGE": 60,  # 커넥션 재사용(초)
 #    }
-#}
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

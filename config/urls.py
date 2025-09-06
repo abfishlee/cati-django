@@ -21,4 +21,5 @@ from django.urls import include, path
 urlpatterns = [
     path("admin/", admin.site.urls),  # 장고 기본 관리자
     path("contacts/", include("contacts.urls")),  # contacts 앱의 urls.py 로 분기
+    path("board/", include("board.urls")),
 ]
