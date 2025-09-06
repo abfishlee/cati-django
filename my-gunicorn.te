@@ -1,0 +1,30 @@
+
+module my-gunicorn 1.0;
+
+require {
+	type init_t;
+	type var_t;
+	type mysqld_port_t;
+	type httpd_sys_content_t;
+	class file { create execute execute_no_trans ioctl open read };
+	class lnk_file read;
+	class sock_file { create setattr unlink };
+	class tcp_socket name_connect;
+}
+
+#============= init_t ==============
+
+#!!!! This avc is allowed in the current policy
+#!!!! This av rule may have been overridden by an extended permission av rule
+allow init_t httpd_sys_content_t:file { execute execute_no_trans ioctl open read };
+allow init_t httpd_sys_content_t:file create;
+
+#!!!! This avc is allowed in the current policy
+allow init_t httpd_sys_content_t:lnk_file read;
+
+#!!!! This avc is allowed in the current policy
+allow init_t httpd_sys_content_t:sock_file { create setattr unlink };
+allow init_t mysqld_port_t:tcp_socket name_connect;
+
+#!!!! This avc is allowed in the current policy
+allow init_t var_t:file execute;
