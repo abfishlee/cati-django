@@ -4,6 +4,7 @@ import json  # JSON 데이터를 다루기 위한 라이브러리
 from django.forms.models import model_to_dict  # Django 모델 객체를 Python 딕셔너리로 변환하는 함수
 from django.http import JsonResponse  # JSON 형식으로 응답을 보내기 위한 클래스
 from django.shortcuts import get_object_or_404, render  # HTML 템플릿 렌더링 및 객체 조회를 위한 함수
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import (
     require_http_methods,  # 특정 HTTP 요청 메소드만 허용하는 데코레이터
 )
@@ -16,6 +17,7 @@ from .models import Post
 # -----------------------------------------------------------------------------
 
 
+@ensure_csrf_cookie
 def post_list(request):
     """
     게시판의 메인 HTML 페이지를 렌더링(보여주는)하는 함수입니다.
